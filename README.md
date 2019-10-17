@@ -22,7 +22,19 @@ Use `Node.js`, `Express` and `Knex` to build an API that provides **Register** a
 | GET    | /api/users    | If the user is logged in, respond with an array of all the users contained in the database. If the user is not logged in repond with the correct status code and the message: 'You shall not pass!'.            |
 
 ### After we cover the lecture on **sessions** and **cookies**, use them to keep a record of logged in users across requests.
+- Session will contain your authentication information after you successfully log into a server which means you don't need to re-enter credentials on every new request.
+  - Use 3rd-party library
+  ```bash
+  npm install express-session
+  npm install connect-session-knex
+  ```
+  ```js
+  const session = require('express-session');
+  const connectSessionKnex = require('connect-session-knex');
+  const KnexSessionStore = connectSessionKnex(session);
 
+  server.use(session(sessionConfig));
+  ```
 
 ## Stretch Problem
 
